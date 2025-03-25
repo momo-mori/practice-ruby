@@ -13,15 +13,21 @@ class Car
 
   #走行可能なスピードの設定
   def allow_car_speed(speed)
-    if car_speed >= 130
-      puts "スピードの出し過ぎです。130km/h未満で走行してください。"
+    if speed <= 180
+      @speed = speed
+    else
+      false
     end
+  end
+
+  #車の走行スピードの表示
+  def show_car_speed
+    puts "現在#{@speed}km/hです。"
   end
 end
 
 #レクサスインスタンスの定義
 lexus_car = Car.new("gray", "lexus")
-car_speed = 170
 lexus_car.show_car
-lexus_car.show_car_speed(140)
-lexus_car.allow_car_speed
+lexus_car.allow_car_speed(190)
+lexus_car.show_car_speed
