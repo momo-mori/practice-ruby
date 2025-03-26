@@ -1,9 +1,11 @@
 class Car 
-  #インスタンス作成時に実行
+  #車の最大速度を定義
+  MAX_SPEED = 180
   #車の色、モデルの変数を持つ
   def initialize(color, model)
     @color = color
     @model = model
+    @speed = 0
   end
 
   #車の色と車種の表示
@@ -12,11 +14,11 @@ class Car
   end
 
   #走行可能なスピードの設定
-  def allow_car_speed(speed)
-    if speed <= 180
+  def set_speed(speed)
+    if speed <= MAX_SPEED
       @speed = speed
     else
-      false
+      puts "スピードは#{MAX_SPEED}km/hで設定してください。"
     end
   end
 
@@ -29,5 +31,5 @@ end
 #レクサスインスタンスの定義
 lexus_car = Car.new("gray", "lexus")
 lexus_car.show_car
-lexus_car.allow_car_speed(190)
+lexus_car.set_speed(180)
 lexus_car.show_car_speed
