@@ -1,10 +1,10 @@
 class Car 
-  #車の最大速度を定義
+  #最大速度を定義
   MAX_SPEED = 180
-  #停車時のスピードの表示
-  STOP_SPEED = 0
+  #停車速度を定義
+  ZERO_SPEED = 0
 
-  #車の色、モデルの変数を持つ
+  #車の色、モデルの変数を定義
   def initialize(color, model)
     @color = color
     @model = model
@@ -16,22 +16,27 @@ class Car
     puts "車の色は#{@color}で、モデルは#{@model}です"
   end
 
-  #走行スピードの表示
+  #走行スピードの設定
   def set_speed(speed)
-    #速度0km/h時の表示
-    if speed == STOP_SPEED
-      puts "停車しています。" 
-    elsif
-      speed <= MAX_SPEED
+    if speed <= MAX_SPEED
       @speed = speed
     else
       puts "スピードは#{MAX_SPEED}km/hで設定してください。"
     end
   end
-
+  
   #車の走行スピードの表示
   def show_car_speed
-    puts "現在#{@speed}km/hです。"
+    #MAX_SPEEDは処理をしない
+    if @speed > MAX_SPEED
+      false
+    #ZERO_SPEEDは、「停車しています。」と表示
+    elsif @speed == ZERO_SPEED
+      puts "停車しています。"
+    else
+      #条件に満たない場合は走行スピードを表示
+      puts "現在#{@speed}km/hです。"
+    end
   end
 end
 
